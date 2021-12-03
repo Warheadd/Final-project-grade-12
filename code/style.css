@@ -1,0 +1,43 @@
+html *
+{
+   font-family: Helvetica !important;
+}
+
+#banner {
+  background-color: green;
+}
+
+.title {
+  text-align: center;
+}
+
+.line {
+  color: green;
+  background-color: green;
+  height: 2px;
+  border-width: 0;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.activity {
+  font-family: Helvetica;
+  color: black;
+  border: 2px solid black;
+  width: 40%;
+  height: 150px;
+  border-radius: 20px;
+  text-decoration: none;
+  margin: 20px;
+  padding: 10px;
+}
+
+.about {
+  color: white;
+  text-decoration: none;
+  background-color: black;
+}
