@@ -1,0 +1,18 @@
+{
+  "name": "cs-big-project",
+  "version": "1.0.0",
+  "description": "carbon tracker",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^16.0.4",
+    "electron-installer-windows": "^0.2.0",
+    "electron-packager": "^8.7.2",
+    "electron-squirrel-startup": "^1.0.0",
+    "electron-winstaller": "^2.6.3"
+  }
+}
