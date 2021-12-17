@@ -7,7 +7,7 @@ for(let i=0; i<transports.length; i++){
     var a = document.getElementById(transports[i]);
     a.onclick = function() {
         transport = transports[i];
-        writeFile("typeOfTransport.txt", transport, function (err) {
+        writeFile("pages/activities/transportation/typeOfTransport.txt", transport, function (err) {
             if (err) console.error(err);   
         });
     }

@@ -9,7 +9,7 @@ submit.onclick = function() {
     }
     var transportType;
     try {
-        transportType = readFileSync("typeOfTransport.txt", "utf8");
+        transportType = readFileSync("pages/activities/transportation/typeOfTransport.txt", "utf8");
     } 
     catch (err) {
         console.error(err);

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Carbon Tracker</title>
+    <link href="../../../style.css" rel="stylesheet"/>
+  </head>
+
+  <body>
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    
+    <div id="root">
+      <div id="banner">
+        <a href="../../../index.html">
+          <img src="../../../assets/logo.png" alt="Logo" id="logo">
+        </a>
+        <a href="../../../pages/profile.html">
+          <img src="../../../assets/profile.png" alt="My profile" id="profile">
+        </a>
+      </div>
+      <h1 class="title">Screen Time</h1>
+      <hr class="line"/>
+      <div class="container">
+        <h2 class="largeText">Please enter the number of hours you did these activities for today</h2>
+
+        <p class="smallText">Charging phone or tablet</p>
+        <input type="text" id="phone" class="inputBox">
+        <p class="smallText">Using laptop</p>
+        <input type="text" id="laptop" class="inputBox">
+        <p class="smallText">Using PC</p>
+        <input type="text" id="pc" class="inputBox">
+        <p class="smallText">Watching TV</p>
+        <input type="text" id="tv" class="inputBox">
+        <p class="smallText">Using the internet</p>
+        <input type="text" id="internet" class="inputBox">
+      </div>
+      <button class="submitButton" id="submitScreen">Submit</button>
+      <p class="error" id="screenError" hidden>Please only input numbers between 0 and 24</p>
+    </div>
+  </body>
+  <script src="screen.js"></script>
+</html>

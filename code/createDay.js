@@ -16,7 +16,12 @@ async function startNew() {
             // this is a percentage of only the meat
             beef: 0,
             local: 0
-        }
+        },
+        screen: {},
+        lights: 0,
+        otherDevices: {},
+        purchases: {},
+        other: {}
     }
     for(let i=0; i<transports.length; i++){
         newDay.transportation[transports[i]] = 0;
