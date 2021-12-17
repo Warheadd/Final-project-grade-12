@@ -1,0 +1,1 @@
+exports.transports = ["gascar","electric","bus","walk","plane","train","boat"];
