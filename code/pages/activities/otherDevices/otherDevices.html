@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Carbon Tracker</title>
+    <link href="../../../style.css" rel="stylesheet"/>
+  </head>
+
+  <body>
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    
+    <div id="root">
+      <div id="banner">
+        <a href="../../../index.html">
+          <img src="../../../assets/logo.png" alt="Logo" id="logo">
+        </a>
+        <a href="../../../pages/profile.html">
+          <img src="../../../assets/profile.png" alt="My profile" id="profile">
+        </a>
+      </div>
+      <h1 class="title">Carbon emissions other devices</h1>
+      <hr class="line"/>
+      <div class="verticalContainer">
+        <h2 class="largeText">Please check all the devices you have used today</h2>
+        <h2 class="categoryText">Kitchen</h2>
+        <input type="checkbox" id="oven">
+        <label for="oven"> Oven</label><br>
+        <input type="checkbox" id="stove">
+        <label for="stove"> Stove</label><br>
+        <input type="checkbox" id="microwave">
+        <label for="microwave"> Microwave</label><br>
+        <input type="checkbox" id="blender">
+        <label for="blender"> Blender</label><br>
+        <input type="checkbox" id="coffee machine">
+        <label for="coffee machine"> Coffee machine</label><br>
+        <input type="checkbox" id="kettle">
+        <label for="kettle"> Kettle</label><br>
+        <input type="checkbox" id="dishwasher">
+        <label for="dishwasher"> Dishwasher</label><br>
+
+        <h2 class="categoryText">Heating/Cooling</h2>
+        <input type="checkbox" id="small fan">
+        <label for="small fan"> Small fan</label><br>
+        <input type="checkbox" id="ceiling fan">
+        <label for="ceiling fan"> Ceiling fan</label><br>
+
+        <h2 class="categoryText">Cleaning</h2>
+        <input type="checkbox" id="washing machine">
+        <label for="washing machine"> Washing machine</label><br>
+        <input type="checkbox" id="dryer">
+        <label for="dryer"> Dryer</label><br>
+        <input type="checkbox" id="vacuum cleaner">
+        <label for="vacuum cleaner"> Vacuum cleaner</label><br>
+
+        <h2 class="categoryText">Office</h2>
+        <input type="checkbox" id="printer">
+        <label for="printer"> Printer</label><br>
+        <input type="checkbox" id="lamp">
+        <label for="lamp"> Lamp</label><br>
+        
+        <h2 class="categoryText">Entertainment</h2>
+        <input type="checkbox" id="router">
+        <label for="router"> Router</label><br>
+        <input type="checkbox" id="console">
+        <label for="console"> Console</label><br>
+
+        <h2 class="categoryText">Other</h2>
+        <input type="checkbox" id="hair dryer">
+        <label for="hair dryer"> Hair Dryer</label><br>
+        <input type="checkbox" id="fire">
+        <label for="fire"> Making a fire</label><br>
+        <input type="checkbox" id="bbq">
+        <label for="bbq"> BBQ</label><br>
+      </div>
+      <button class="submitButton" id="submitDevices" style="margin-top: 20px;">Submit</button>
+    </div>
+  </body>
+  <script src="otherDevices.js"></script>
+</html>

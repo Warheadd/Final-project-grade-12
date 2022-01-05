@@ -44,6 +44,11 @@ html *
   align-items: center;
 }
 
+.verticalContainer {
+  margin-right: 20%;
+  margin-left: 20%;
+}
+
 .activity {
   font-family: Helvetica;
   color: black;
@@ -106,4 +111,10 @@ html *
   width: 100%;
   margin: auto;
   text-align: center;
+}
+
+.categoryText {
+  font-weight: normal;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Carbon Tracker</title>
+    <link href="../../../style.css" rel="stylesheet"/>
+  </head>
+
+  <body>
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    
+    <div id="root">
+      <div id="banner">
+        <a href="../../../index.html">
+          <img src="../../../assets/logo.png" alt="Logo" id="logo">
+        </a>
+        <a href="../../../pages/profile.html">
+          <img src="../../../assets/profile.png" alt="My profile" id="profile">
+        </a>
+      </div>
+      <h1 class="title">How many hours were your lights on? (approximate)</h1>
+      <hr class="line"/>
+      <h2 class="largeText">Please input a time in hours:</h2>
+      <input type="text" id="lightLength" class="inputBox">
+      <button class="submitButton" id="submitLight">Submit</button>
+      <p class="error" id="lightError" hidden>Please input a number between 0 and 24</p>
+    </div>
+  </body>
+  <script src="lights.js"></script>
+</html>

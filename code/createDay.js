@@ -1,6 +1,8 @@
 const { readFileSync, writeFile } = require("fs");
 const global = require("./globals.js");
 const transports = global.transports;
+const screens = global.screens;
+const devices = global.devices;
 
 const start = document.getElementById("startnew");
 start.onclick = startNew;
@@ -9,6 +11,7 @@ async function startNew() {
     var newDay = {
         index: 0,
         date: "",
+        // in hours
         transportation: {},
         // in terms of percentages
         food: {
@@ -17,14 +20,23 @@ async function startNew() {
             beef: 0,
             local: 0
         },
+        // in hours
         screen: {},
+        // in hours
         lights: 0,
+        // in boolean values (whether or not the device was used)
         otherDevices: {},
         purchases: {},
         other: {}
     }
     for(let i=0; i<transports.length; i++){
         newDay.transportation[transports[i]] = 0;
+    }
+    for(let i=0; i<screens.length; i++){
+        newDay.screen[screens[i]] = 0;
+    }
+    for(let i=0; i<devices.length; i++){
+        newDay.otherDevices[devices[i]] = false;
     }
     newDay.date = new Date().toString();
 
