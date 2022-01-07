@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="theme-color" content="#000000" />
+    <title>Carbon Tracker</title>
+    <link href="../../style.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    <div id="root">
+      <div id="banner">
+        <a href="province.html">
+          <img src="../../assets/logo.png" alt="Logo" id="logo">
+        </a>
+      </div>
+      <h1 class="title">Welcome! Please answer a few questions to get started.</h1>
+      <hr class="line"/>
+      <div class="verticalContainer" style="margin-bottom: 20px;">
+        <h2 class="largeText">How many kWh per year does your fridge use? (optional)</h2>
+        <input type="text" id="fridge" class="inputBox">
+        <input type="checkbox" id="router" checked style="margin-top:20px;">
+        <label> Do you have a router?</label>
+      </div>
+      <p class="error" id="otherProfileError" hidden>Please input a number</p>
+      <button class="submitButton" id="submitOtherProfile">Next</button>
+    </div>
+  </body>
+  <script src="otherProfile.js"></script>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="theme-color" content="#000000" />
+    <title>Carbon Tracker</title>
+    <link href="../../style.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    <div id="root">
+      <div id="banner">
+        <a href="province.html">
+          <img src="../../assets/logo.png" alt="Logo" id="logo">
+        </a>
+      </div>
+      <h1 class="title">Welcome! Please answer a few questions to get started.</h1>
+      <hr class="line"/>
+      <h2 class="largeText">What is the approximate square footage of your house?</h2>
+      <input type="text" id="squareFoot" class="inputBox">
+      <h2 class="largeText">How is your home heated/cooled?</h2>
+      <select id="heating" class="select">
+        <option value="electric furnace" selected="selected">Electric furnace</option>
+        <option value="natural gas furnace">Natural gas furnace</option>
+        <option value="fuel oil furnace">Fuel oil furnace</option>
+        <option value="boiler">Boiler</option>
+        <option value="heat pump">Heat pump</option>
+      </select>
+      <h2 class="largeText">Does your home have majority incandescent or LED lights?</h2>
+      <select id="lights" class="select">
+        <option value="incandescent" selected="selected">Incandescent</option>
+        <option value="led">LED</option>
+      </select>
+      <p class="error" id="homeError" hidden>Please input a number</p>
+      <button class="submitButton" id="submitHome">Next</button>
+    </div>
+  </body>
+  <script src="home.js"></script>
+</html>

@@ -27,7 +27,7 @@ submit.onclick = function() {
     for(let i=0; i<purchases.length; i++){
         todayData.purchases[i] = {};
         var purchase = purchases[i].childNodes;
-        todayData.purchases[i].research = purchase[1].checked;
+        todayData.purchases[i].research = purchase[0].checked;
         var carbon = purchase[4].value;
         var price = purchase[9].value;
         if(price.charAt(0)=="$"){

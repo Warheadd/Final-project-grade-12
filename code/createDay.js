@@ -4,6 +4,17 @@ const transports = global.transports;
 const screens = global.screens;
 const devices = global.devices;
 
+var profile;
+try {
+    profile = readFileSync("data/profile.json", "utf8");
+} 
+catch (err) {
+    console.error(err);
+}
+if(profile==""){
+    window.location.href = "pages/profile/province.html";
+}
+
 const start = document.getElementById("startnew");
 start.onclick = startNew;
 
@@ -27,7 +38,6 @@ async function startNew() {
         // in boolean values (whether or not the device was used)
         otherDevices: {},
         purchases: {},
-        other: {}
     }
     for(let i=0; i<transports.length; i++){
         newDay.transportation[transports[i]] = 0;
@@ -95,4 +105,18 @@ async function startNew() {
     writeFile("data/today.json", JSON.stringify(newDay), function (err) {
         if (err) console.error(err);
     });
+}
+
+const contin = document.getElementById("continue");
+contin.onclick = function(){
+    var todayData;
+    try {
+        todayData = readFileSync("data/today.json", "utf8");
+    } 
+    catch (err) {
+        console.error(err);
+    }
+    if(todayData==""){
+        startNew();
+    }
 }
