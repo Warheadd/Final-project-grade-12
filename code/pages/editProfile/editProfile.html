@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="theme-color" content="#000000" />
+    <title>Carbon Tracker</title>
+    <link href="../../style.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    <div id="root">
+      <div id="banner">
+        <a href="../../index.html">
+          <img src="../../assets/logo.png" alt="Logo" id="logo">
+        </a>
+      </div>
+      <h1 class="title">Edit profile</h1>
+      <hr class="line"/>
+      <h2 class="largeText">Province</h2>
+      <select id="province" class="select">
+        <option id="ontario" value="ontario">Ontario</option>
+        <option id="alberta" value="alberta">Alberta</option>
+        <option id="british columbia" value="british columbia">British Columbia</option>
+        <option id="manitoba" value="manitoba">Manitoba</option>
+        <option id="new brunswick" value="new brunswick">New Brunswick</option>
+        <option id="newfoundland and labrador" value="newfoundland and labrador">Newfoundland and Labrador</option>
+        <option id="northwest territories" value="northwest territories">Northwest Territories</option>
+        <option id="nova scotia" value="nova scotia">Nova Scotia</option>
+        <option id="nunavut" value="nunavut">Nunavut</option>
+        <option id="prince edward island" value="prince edward island">Prince Edward Island</option>
+        <option id="quebec" value="quebec">Quebec</option>
+        <option id="saskatchewan" value="saskatchewan">Saskatchewan</option>
+        <option id="yukon" value="yukon">Yukon</option>
+      </select>
+      <hr class="line"/>
+      <h2 class="largeText">Square footage</h2>
+      <input type="text" id="squareFoot" class="inputBox">
+      <h2 class="largeText">Heating/cooling</h2>
+      <select id="heating" class="select">
+        <option id="electric furnace" value="electric furnace">Electric furnace</option>
+        <option id="natural gas furnace" value="natural gas furnace">Natural gas furnace</option>
+        <option id="fuel oil furnace" value="fuel oil furnace">Fuel oil furnace</option>
+        <option id="boiler" value="boiler">Boiler</option>
+        <option id="heat pump" value="heat pump">Heat pump</option>
+      </select>
+      <h2 class="largeText">Light type</h2>
+      <select id="lights" class="select">
+        <option id="incandescent" value="incandescent">Incandescent</option>
+        <option id="led" value="led">LED</option>
+      </select>
+      <hr class="line"/>
+      <div class="verticalContainer" style="margin-bottom: 20px;">
+        <h2 class="largeText">Fridge energy usage</h2>
+        <input type="text" id="fridge" class="inputBox">
+        <input type="checkbox" id="router" style="margin-top:20px;">
+        <label> Do you have a router?</label>
+      </div>
+      <p class="error" id="editProfileError" hidden>One or more fields are incorrect.</p>
+      <button class="submitButton" id="submitEditProfile">Save</button>
+    </div>
+  </body>
+  <script src="editProfile.js"></script>
+</html>

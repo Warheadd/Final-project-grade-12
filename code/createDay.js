@@ -12,7 +12,7 @@ catch (err) {
     console.error(err);
 }
 if(profile==""){
-    window.location.href = "pages/profile/province.html";
+    window.location.href = "pages/createProfile/province.html";
 }
 
 const start = document.getElementById("startnew");

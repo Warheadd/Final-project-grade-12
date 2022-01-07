@@ -87,6 +87,13 @@ html *
   text-align: center;
   display: block;
   margin: auto;
+  background-color: green;
+  height: 50px;
+  width: 80px;
+  border-radius: 10px;
+  border-width: 0;
+  color: white;
+  font-size: 15px;
 }
 
 .inputBox {
