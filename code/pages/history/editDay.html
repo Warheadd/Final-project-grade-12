@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Carbon Tracker</title>
+    <link href="../../style.css" rel="stylesheet"/>
+  </head>
+
+  <body>
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    
+    <div id="root">
+      <div id="banner">
+        <a href="../../index.html">
+          <img src="../../assets/logo.png" alt="Logo" id="logo">
+        </a>
+        <a href="../profile.html">
+          <img src="../../assets/profile.png" alt="My profile" id="profile">
+        </a>
+      </div>
+      <h1 class="title">Edit day</h1>
+      <hr class="line"/>
+      <h2 class="largeText">Hours in a gas car</h2>
+      <input type="text" id="gascar" class="inputBox">
+      <h2 class="largeText">Hours in an electric car</h2>
+      <input type="text" id="electric" class="inputBox">
+      <h2 class="largeText">Hours in a bus</h2>
+      <input type="text" id="bus" class="inputBox">
+      <h2 class="largeText">Hours walking</h2>
+      <input type="text" id="walk" class="inputBox">
+      <h2 class="largeText">Hours in a plane</h2>
+      <input type="text" id="plane" class="inputBox">
+      <h2 class="largeText">Hours in a train</h2>
+      <input type="text" id="train" class="inputBox">
+      <h2 class="largeText">Hours in a boat</h2>
+      <input type="text" id="boat" class="inputBox">
+
+      <hr class="line"/>
+      <div class="container">
+        <h2 class="largeText">Percentage of food that was meat</h2>
+        <input type="range" min="0" max="100" value="0" class="slider" id="sMeat">
+        <p1 class="sliderOutput" id="pMeat">0%</p1>
+        <h2 class="largeText">Percentage of meat that was beef</h2>
+        <input type="range" min="0" max="100" value="0" class="slider" id="sBeef">
+        <p1 class="sliderOutput" id="pBeef">0%</p1>
+        <h2 class="largeText">Percentage of food that was locally bought</h2>
+        <input type="range" min="0" max="100" value="0" class="slider" id="sLocal">
+        <p1 class="sliderOutput" id="pLocal">0%</p1>
+      </div>
+
+      <hr class="line"/>
+      <p class="smallText">Hours charging phone/tablet</p>
+      <input type="text" id="phone" class="inputBox">
+      <p class="smallText">Hours using laptop</p>
+      <input type="text" id="laptop" class="inputBox">
+      <p class="smallText">Hours using PC</p>
+      <input type="text" id="pc" class="inputBox">
+      <p class="smallText">Hours watching TV</p>
+      <input type="text" id="tv" class="inputBox">
+      <p class="smallText">Hours using the internet</p>
+      <input type="text" id="internet" class="inputBox">
+
+      <hr class="line"/>
+      <h2 class="largeText">Hours with lights on</h2>
+      <input type="text" id="lightLength" class="inputBox">
+
+      <hr class="line"/>
+      <div class="verticalContainer">
+        <h2 class="largeText">Devices that were used</h2>
+        <h2 class="categoryText">Kitchen</h2>
+        <input type="checkbox" id="oven">
+        <label for="oven"> Oven</label><br>
+        <input type="checkbox" id="stove">
+        <label for="stove"> Stove</label><br>
+        <input type="checkbox" id="microwave">
+        <label for="microwave"> Microwave</label><br>
+        <input type="checkbox" id="blender">
+        <label for="blender"> Blender</label><br>
+        <input type="checkbox" id="coffee machine">
+        <label for="coffee machine"> Coffee machine</label><br>
+        <input type="checkbox" id="kettle">
+        <label for="kettle"> Kettle</label><br>
+        <input type="checkbox" id="dishwasher">
+        <label for="dishwasher"> Dishwasher</label><br>
+
+        <h2 class="categoryText">Heating/Cooling</h2>
+        <input type="checkbox" id="small fan">
+        <label for="small fan"> Small fan</label><br>
+        <input type="checkbox" id="ceiling fan">
+        <label for="ceiling fan"> Ceiling fan</label><br>
+
+        <h2 class="categoryText">Cleaning</h2>
+        <input type="checkbox" id="washing machine">
+        <label for="washing machine"> Washing machine</label><br>
+        <input type="checkbox" id="dryer">
+        <label for="dryer"> Dryer</label><br>
+        <input type="checkbox" id="vacuum cleaner">
+        <label for="vacuum cleaner"> Vacuum cleaner</label><br>
+
+        <h2 class="categoryText">Office</h2>
+        <input type="checkbox" id="printer">
+        <label for="printer"> Printer</label><br>
+        <input type="checkbox" id="lamp">
+        <label for="lamp"> Lamp</label><br>
+        
+        <h2 class="categoryText">Entertainment</h2>
+        <input type="checkbox" id="console">
+        <label for="console"> Console</label><br>
+
+        <h2 class="categoryText">Other</h2>
+        <input type="checkbox" id="hair dryer">
+        <label for="hair dryer"> Hair Dryer</label><br>
+        <input type="checkbox" id="fire">
+        <label for="fire"> Making a fire</label><br>
+        <input type="checkbox" id="bbq">
+        <label for="bbq"> BBQ</label><br>
+      </div>
+
+      <hr class="line"/>
+      <div id="purchases">
+      </div>
+      <button class="submitButton" id="add" style="width: 100px;">Add another purchase</button>
+        
+      <hr class="line"/>
+      <p class="error" id="dayError" hidden>One or more fields are incorrect</p>
+      <button class="submitButton" id="submitDay">Submit</button>
+    </div>
+  </body>
+  <script src="editDay.js"></script>
+</html>

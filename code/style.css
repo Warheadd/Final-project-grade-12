@@ -135,3 +135,15 @@ html *
   font-size: 20px;
   display: block;
 }
+
+.historyElement {
+  font-family: Helvetica;
+  color: black;
+  border: 2px solid black;
+  width: 80%;
+  height: 150px;
+  border-radius: 20px;
+  text-decoration: none;
+  margin: 20px;
+  padding: 10px;
+}

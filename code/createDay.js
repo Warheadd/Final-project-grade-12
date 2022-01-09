@@ -84,21 +84,18 @@ async function startNew() {
         });
         return;
     }
-    days = historyData.split("\n");
 
-    newDay.index = days.length;
-    if(oldDay.index<days.length){
-        days[oldDay.index] = JSON.stringify(oldDay);
-    }
-    else{
-        days.push(JSON.stringify(oldDay));
-    }
+    days = historyData.split("\n");
+    newDay.index = days.length+1;
+    days.push(JSON.stringify(oldDay));
 
     let newFile = "";
     for(let i=0; i<days.length; i++){
-        newFile += days[i]+"\n";
+        newFile += days[i];
+        if(i<days.length-1){
+            newFile += "\n";
+        }
     }
-
     writeFile("data/history.txt", newFile, function (err) {
         if (err) console.error(err);
     });

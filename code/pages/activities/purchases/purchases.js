@@ -1,14 +1,11 @@
 const { readFileSync, writeFile } = require("fs");
-const GRAMS_PER_DOLLAR = 490;
-const PURCHASE_HTML = '<div class="verticalContainer"><input type="checkbox" style="margin-top:20px;"><label style="margin-bottom:30px"> Did you do any research about the environmental impact of the product beforehand?</label><br><h2 class="largeText" style="margin-top:10px">Please input the approximate grams of carbon used in the making of the product(s) (research is encouraged)</h2><input type="text" class="inputBox"><br><h2 class="largeText">OR</h2><br><h2 class="largeText">Please input the total price of the products(s) (Warning: VERY innacurate, only a crude approximation. Research is encouraged)</h2><input type="text" class="inputBox"><hr class="line" style="margin-bottom:20px"/></div>';
+const PURCHASE_HTML = '<div class="verticalContainer"><input type="checkbox" style="margin-top:20px;"><label style="margin-bottom:30px"> Did you do any research about the environmental impact of the product beforehand?</label><br><h2 class="largeText" style="margin-top:40px">Please input the approximate grams of carbon used in the making of the product(s) (research is encouraged)</h2><input type="text" class="inputBox"><br><h2 class="largeText">OR</h2><br><h2 class="largeText">Please input the total price of the products(s) (Warning: VERY innacurate, only a crude approximation. Research is encouraged)</h2><input type="text" class="inputBox"><hr class="line" style="margin-bottom:20px"/></div>';
 
 var add = document.getElementById("add");
 add.onclick = function() {
-    var purchases = document.getElementsByClassName("verticalContainer");
     var container = document.getElementById("purchases");
     var purchase = document.createElement("div");
     container.appendChild(purchase);
-    var n = purchases.length;
     purchase.outerHTML = PURCHASE_HTML;
 }
 
@@ -33,23 +30,29 @@ submit.onclick = function() {
         if(price.charAt(0)=="$"){
             price = price.slice(1);
         }
-        if(price!="" && (isNaN(price) || price<0)){
-            document.getElementById("purchaseError").hidden = false;
-            return;
+        if(price!=""){
+            if(isNaN(price) || price<0){
+                document.getElementById("purchaseError").hidden = false;
+                return;
+            }
+            else {
+                todayData.purchases[i].price = Number(price);
+            }
+        }
+        else {
+            todayData.purchases[i].price = undefined;
         }
         if(carbon!=""){
             if(isNaN(carbon) || carbon<0){
                 document.getElementById("purchaseError").hidden = false;
                 return;
             }
-            todayData.purchases[i].carbon = Number(carbon);
-        }
-        else if(price!=""){
-            todayData.purchases[i].carbon = Number(price) * GRAMS_PER_DOLLAR;
+            else {
+                todayData.purchases[i].carbon = Number(carbon);
+            }
         }
         else {
-            document.getElementById("purchaseError").hidden = false;
-            return;
+            todayData.purchases[i].carbon = undefined;
         }
     }
 
