@@ -1,4 +1,6 @@
 const { readFileSync, writeFile } = require("fs");
+const global = require("../../../globals.js");
+const checkDay = global.checkDay;
 const PURCHASE_HTML = '<div class="verticalContainer"><input type="checkbox" style="margin-top:20px;"><label style="margin-bottom:30px"> Did you do any research about the environmental impact of the product beforehand?</label><br><h2 class="largeText" style="margin-top:40px">Please input the approximate grams of carbon used in the making of the product(s) (research is encouraged)</h2><input type="text" class="inputBox"><br><h2 class="largeText">OR</h2><br><h2 class="largeText">Please input the total price of the products(s) (Warning: VERY innacurate, only a crude approximation. Research is encouraged)</h2><input type="text" class="inputBox"><hr class="line" style="margin-bottom:20px"/></div>';
 
 var add = document.getElementById("add");
@@ -18,7 +20,11 @@ submit.onclick = function() {
     catch (err) {
         console.error(err);
     }
-    todayData = JSON.parse(todayData);
+    if(!checkDay()) {  
+        window.location.href = "../../error/dayError.html";
+        return;
+    }
+    todayData = JSON.parse(todayData);  
 
     var purchases = document.getElementsByClassName("verticalContainer");
     for(let i=0; i<purchases.length; i++){

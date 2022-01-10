@@ -1,19 +1,9 @@
-const { readFileSync, writeFile } = require("fs");
 const global = require("./globals.js");
 const transports = global.transports;
 const screens = global.screens;
 const devices = global.devices;
-
-var profile;
-try {
-    profile = readFileSync("data/profile.json", "utf8");
-} 
-catch (err) {
-    console.error(err);
-}
-if(profile==""){
-    window.location.href = "pages/createProfile/province.html";
-}
+const checkHistory = global.checkHistory;
+const checkDay = global.checkDay;
 
 const start = document.getElementById("startnew");
 start.onclick = startNew;
@@ -64,9 +54,17 @@ async function startNew() {
         });
         return;
     }
-    oldDay = JSON.parse(todayData);
+    if(!checkDay()) {  
+        window.location.href = "../../error/dayError.html";
+        return;
+    }
+    oldDay = JSON.parse(todayData);  
     
     var days;
+    if(!checkHistory()) {  
+        window.location.href = "../../error/historyError.html";
+        return;
+    }
     var historyData;
     try {
         historyData = readFileSync("data/history.txt", "utf8");
@@ -91,6 +89,7 @@ async function startNew() {
 
     let newFile = "";
     for(let i=0; i<days.length; i++){
+        JSON.parse(days[i]);  
         newFile += days[i];
         if(i<days.length-1){
             newFile += "\n";

@@ -1,4 +1,6 @@
 const {readFileSync, writeFile} = require("fs");
+const global = require("../../globals.js");
+const checkProfile = global.checkProfile;
 
 var profile;
 try {
@@ -7,7 +9,11 @@ try {
 catch (err) {
     console.error(err);
 }
-profile = JSON.parse(profile);
+if(!checkProfile()) {  
+    window.location.href = "../../error/profileError.html";
+    return;
+}
+profile = JSON.parse(profile);  
 
 var province = document.getElementById(profile.province);
 province.selected = "selected";

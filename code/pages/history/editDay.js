@@ -3,6 +3,8 @@ const global = require("../../globals.js");
 const transports = global.transports;
 const screens = global.screens;
 const devices = global.devices;
+const checkHistory = global.checkHistory;
+const check = global.check;
 const PURCHASE_HTML = '<input type="checkbox" style="margin-top:20px;"><label style="margin-bottom:30px"> Whether research was done</label><br><h2 class="largeText" style="margin-top:40px">Grams of carbon emitted</h2><input type="text" class="inputBox"><br><h2 class="largeText">OR</h2><br><h2 class="largeText">Price</h2><input type="text" class="inputBox"><hr class="line" style="margin-bottom:20px"/>';
 const GRAMS_PER_DOLLAR = 490;
 
@@ -13,7 +15,10 @@ try {
 catch (err) {
     console.error(err);
 }
-todayData = JSON.parse(todayData);
+if(!check(todayData)) {  
+    window.location.href = "../../error/historyError.html";
+}
+todayData = JSON.parse(todayData);  
 
 for(let i=0; i<transports.length; i++){
     var transport = document.getElementById(transports[i]);
@@ -168,6 +173,10 @@ submit.onclick = function() {
     }
 
     var days;
+    if(!checkHistory()) {  
+        window.location.href = "../../error/historyError.html";
+        return;
+    }
     var historyData;
     try {
         historyData = readFileSync("data/history.txt", "utf8");

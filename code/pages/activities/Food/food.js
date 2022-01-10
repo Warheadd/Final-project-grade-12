@@ -1,4 +1,6 @@
 const { readFileSync, writeFile } = require("fs");
+const global = require("../../../globals.js");
+const checkDay = global.checkDay;
 
 var sMeat = document.getElementById("sMeat");
 var pMeat = document.getElementById("pMeat");
@@ -27,8 +29,12 @@ submit.onclick = function() {
     catch (err) {
         console.error(err);
     }
+    if(!checkDay()) {  
+        window.location.href = "../../error/dayError.html";
+        return;
+    }
+    todayData = JSON.parse(todayData);  
 
-    todayData = JSON.parse(todayData);
     todayData.food.meat = Number(sMeat.value);
     todayData.food.beef = Number(sBeef.value);
     todayData.food.local = Number(sLocal.value);

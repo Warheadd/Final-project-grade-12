@@ -1,4 +1,6 @@
 const {readFileSync, writeFile} = require("fs");
+const global = require("../../globals.js");
+const checkProfile = global.checkProfile;
 
 var submit = document.getElementById("submitOtherProfile");
 submit.onclick = function() {
@@ -12,7 +14,11 @@ submit.onclick = function() {
     catch (err) {
         console.error(err);
     }
-    profile = JSON.parse(profile);
+    if(!checkProfile()) {  
+        window.location.href = "../../error/profileError.html";
+        return;
+    }
+    profile = JSON.parse(profile);  
 
     if(fridge!=""){
         if(isNaN(fridge)){

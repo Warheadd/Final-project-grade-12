@@ -29,8 +29,8 @@ today.json formatting:
     "purchases":{
         // the "0", "1", "2", etc. is just the index for the computer to use since the user can have multiple purchases. "research" is whether or not the user did research. This is not used in the calculation, but it CAN be used at the end of the day as advice on what the user could do better. "carbon" is the grams of carbon the purchase emitted. "price" is the price of the product. If carbon is undefined, use the price to approximate carbon emissions. If carbon is defined, price can be ignored.
         "0":{"research":true,"price":50,"carbon":351},
-        "1":{"research":false,"price":"undefined","carbon":1960},
-        "2":{"research":true,"price":1000,"carbon":"undefined"}
+        "1":{"research":false,"price":undefined,"carbon":1960},
+        "2":{"research":true,"price":1000,"carbon":undefined}
         }
 }
 

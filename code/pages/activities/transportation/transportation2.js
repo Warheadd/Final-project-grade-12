@@ -1,4 +1,6 @@
 const {readFileSync, writeFile} = require("fs");
+const global = require("../../../globals.js");
+const checkDay = global.checkDay;
 
 var submit = document.getElementById("submitTransport");
 submit.onclick = function() {
@@ -21,7 +23,12 @@ submit.onclick = function() {
     catch (err) {
         console.error(err);
     }
-    day = JSON.parse(day);
+    if(!checkDay()) {  
+        window.location.href = "../../error/dayError.html";
+        return;
+    }
+    day = JSON.parse(day);  
+    
     day.transportation[transportType] = Number(time);
     writeFile("data/today.json",JSON.stringify(day), function(err) {
         if (err) console.error(err);

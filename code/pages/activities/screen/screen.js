@@ -1,6 +1,7 @@
 const {readFileSync, writeFile} = require("fs");
 const global = require("../../../globals.js");
 const screens = global.screens;
+const checkDay = global.checkDay;
 
 var submit = document.getElementById("submitScreen");
 submit.onclick = function() {
@@ -11,7 +12,11 @@ submit.onclick = function() {
     catch (err) {
         console.error(err);
     }
-    day = JSON.parse(day);
+    if(!checkDay()) {  
+        window.location.href = "../../error/dayError.html";
+        return;
+    }
+    day = JSON.parse(day);  
 
     for(let i=0; i<screens.length; i++){
         var screen = document.getElementById(screens[i]).value;
