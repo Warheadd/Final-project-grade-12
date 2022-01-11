@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Statistics</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="checkProfile.js"></script>
+  </head>
+
+  <body>
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    <div id="root">
+      <div id="banner">
+        <a href="index.html">
+          <img src="assets/logo.png" alt="Logo" id="logo">
+        </a>
+        <a href="pages/profile.html">
+          <img src="assets/profile.png" alt="My profile" id="profile">
+        </a>
+      </div>
+      <h1 class="title">Good Effort</h1>
+      <hr class="line"/>
+      <div class="container">
+        <a href="#" class="activity" id="startnew" onclick="return startNew()">
+          <div>
+            <h1>Start a New Day</h1>
+            <p></p>
+          </div>
+        </a>
+        <a href="#" class="activity" id="continue" onclick="return contin()">
+          <div>
+            <h1>Continue With Day</h1>
+            <p></p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </body>
+  <script src="createDay.js"></script>
+</html>
