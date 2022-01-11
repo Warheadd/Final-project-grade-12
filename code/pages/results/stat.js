@@ -1,1 +1,11 @@
-f
+{
+"advice":{
+"transportation":true,
+"food":true,
+"led":true
+"screens":true
+"purchase":true
+},
+"earths":5.6,
+"average":1000
+}
