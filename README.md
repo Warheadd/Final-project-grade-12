@@ -4,6 +4,14 @@ Carbon Tracker is an app to help a user track their carbon footprint. Every day,
 
 Built using HTML/JS/CSS with Electron.
 
+INSTALLATION
+Node.js and Electron are required to run the app.
+
+Node.js can be downloaded here: https://nodejs.org/en/download/
+To install electron globally, type this in the command line: npm install electron -g
+
+To run the project afterwards, type this in the command line with the "code" folder open: npm start
+
 FILE INFORMATION:
 
 today.json formatting:
