@@ -1,5 +1,11 @@
 # Final-project-grade-12
 
+Carbon Tracker is an app to help a user track their carbon footprint. Every day, they can enter information about what they did and at the end of the day, it will display their carbon footprint as well as personalized advice on how to improve. Users can figure out how much carbon they are emitting, compare themselves to averages, and track their progress over time.
+
+Built using HTML/JS/CSS with Electron.
+
+FILE INFORMATION:
+
 today.json formatting:
 {
     // The index of the day, only used by the computer
@@ -50,3 +56,5 @@ profile.json formatting:
     // Whether or not the user uses a router
     "router":true
 }
+
+By Rick, Jordan, Faris
