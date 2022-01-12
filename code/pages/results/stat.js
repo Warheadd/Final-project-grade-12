@@ -48,9 +48,11 @@ var recommended = {
        recommended.advice[led] = true;
     }
 
+if(carbonData.screen >
+
     if(carbonData.purchases >42140) {
        recommended.advice[purchase] = true;
     
-
+if(carbonData.heating >
     
 
