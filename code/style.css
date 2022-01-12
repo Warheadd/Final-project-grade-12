@@ -147,3 +147,9 @@ html *
   margin: 20px;
   padding: 10px;
 }
+
+.paragraphText {
+  font-size: 18px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
