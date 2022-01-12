@@ -1,21 +1,37 @@
-const fs = require('fs');
+const {readFileSync, writeFile} = require("fs");
+const global = require("../../globals.js");
+const checkHistory = global.checkHistory;
+const checkDay = global.checkDay;
+
 
     var today;
     try {
-        today= fs.readFileSync("today.json", "utf8");
+        today= readFileSync("today.json", "utf8");
     } 
     catch (err) {
         console.error(err);
     } 
+    
     var profile;
     try {
-        profile= fs.readFileSync("profile.json", "utf8");
+        profile= readFileSync("profile.json", "utf8");
     } 
     catch (err) {
         console.error(err);
     } 
-    profile = JSON.parse(profile);
-    today = JSON.parse(today);
+
+    if(!check(today)) {  
+            window.location.href = "../error/historyError.html";
+        }
+
+    today = JSON.parse(today);  
+
+    if(!check(profile)) {  
+                window.location.href = "../error/historyError.html";
+            }
+
+    profile = JSON.parse(profile);  
+
     //province carbon per kwh
     var povkwh; 
     switch(profile.province){
