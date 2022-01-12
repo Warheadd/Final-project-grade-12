@@ -36,23 +36,32 @@ var recommended = {
 "average":1000
 }
     
-    //all numbers are in grams
+//all numbers are in grams
     
-    if(carbonData.transportation >2485.5) {
-      recommended.advice[transportation] = true;
-    }
-    if(carbonData.food > 5620) {
-       recommended.advice[food] = true;
-    }
-    if(carbonData.lights >195) {
-       recommended.advice[led] = true;
-    }
+if(carbonData.transportation >2485.5) {
+  recommended.advice[transportation] = true;
+}
+if(carbonData.food > 5620) {
+   recommended.advice[food] = true;
+}
+if(carbonData.lights >195) {
+   recommended.advice[led] = true;
+}
+if(carbonData.screen >2.6) {
+   recommended.advice[screens] = true;
+}
+if(carbonData.purchases >42140) {
+   recommended.advice[purchase] = true;
+} 
+if(carbonData.heating >7787) {
+   recommended.advice[heating] = true;
+}
 
-if(carbonData.screen >
+var earthsRequired = 1;
 
-    if(carbonData.purchases >42140) {
-       recommended.advice[purchase] = true;
-    
-if(carbonData.heating >
+earthsRequired = carbonData.total / 9942;
+
+earths = earthsRequired.toFixed(2);
+       
     
 
