@@ -2,7 +2,7 @@ const fs = require('fs');
 
     var today;
     try {
-        today= readFileSync("data/today.json", "utf8");
+        today= readFileSync("today.json", "utf8");
     } 
     catch (err) {
         console.error(err);
@@ -10,7 +10,7 @@ const fs = require('fs');
     
     var profile;
     try {
-        profile= readFileSync("data/profile.json", "utf8");
+        profile= readFileSync("profile.json", "utf8");
     } 
     catch (err) {
         console.error(err);
