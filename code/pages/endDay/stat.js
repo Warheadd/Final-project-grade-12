@@ -39,29 +39,22 @@ var recommended = {
     
 // all numbers are in grams
 // compares user's carbon emission from transportation with the average
-if(carbonData.transportation >2485.5) {
-  recommended.advice[transportation] = true;
-}
+recommended.advice[transportation] = carbonData.transportation >2485.5;
+
 // compares user's carbon emission from food with the average
-if(carbonData.food > 5620) {
-   recommended.advice[food] = true;
-}
+recommended.advice[food] = carbonData.food > 5620;
+
 // compares user's carbon emission from lights with the average
-if(carbonData.lights >195) {
-   recommended.advice[led] = true;
-}
+recommended.advice[led] = carbonData.lights >195;
+
 // compares user's carbon emission from screens with the average
-if(carbonData.screen >2.6) {
-   recommended.advice[screens] = true;
-}
+recommended.advice[screens] = carbonData.screen >2.6;
+
 // compares user's carbon emission from purchases with the average
-if(carbonData.purchases >42140) {
-   recommended.advice[purchase] = true;
-} 
+recommended.advice[purchase] = carbonData.purchases >42140;
+
 // compares user's carbon emission from heating with the average
-if(carbonData.heating >7787) {
-   recommended.advice[heating] = true;
-}
+recommended.advice[heating] = carbonData.heating >7787;
 
 // creates a variable and sets it to 1
 var earthsRequired = 1;
@@ -73,5 +66,7 @@ earthsRequired = carbonData.total / 9942;
 // takes the number of Earths required to sustain your world and rounds it to two decimal places
 recommended.earths = earthsRequired.toFixed(2);
        
-    
-
+// Writes the new data back to a file
+writeFile("pages/endDay/conclusions.json", JSON.stringify(recommended), function (err) {
+   if (err) console.error(err);
+});
