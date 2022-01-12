@@ -143,4 +143,8 @@ const totalcarbon = {
         "total":totalc
 };
 
+writeFile("data/emission.json", JSON.stringify(totalcarbon), function (err) {
+   if (err) console.error(err);
+});
+
 console.log(totalcarbon)
