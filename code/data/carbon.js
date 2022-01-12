@@ -6,7 +6,7 @@ const checkDay = global.checkDay;
 
     var today;
     try {
-        today= readFileSync("today.json", "utf8");
+        today= readFileSync("data/today.json", "utf8");
     } 
     catch (err) {
         console.error(err);
@@ -14,7 +14,7 @@ const checkDay = global.checkDay;
     
     var profile;
     try {
-        profile= readFileSync("profile.json", "utf8");
+        profile= readFileSync("data/profile.json", "utf8");
     } 
     catch (err) {
         console.error(err);
