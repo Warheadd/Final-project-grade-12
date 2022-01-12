@@ -1,8 +1,4 @@
-const {readFileSync, writeFile} = require("fs");
-const global = require("../../globals.js");
-const checkHistory = global.checkHistory;
-const checkDay = global.checkDay;
-
+const fs = require('fs');
 
     var today;
     try {
@@ -20,16 +16,8 @@ const checkDay = global.checkDay;
         console.error(err);
     } 
 
-    if(!check(today)) {  
-            window.location.href = "../error/historyError.html";
-        }
-
-    today = JSON.parse(today);  
-
-    if(!check(profile)) {  
-                window.location.href = "../error/historyError.html";
-            }
-
+   
+    today = JSON.parse(today);
     profile = JSON.parse(profile);  
 
     //province carbon per kwh
@@ -143,8 +131,6 @@ const totalcarbon = {
         "total":totalc
 };
 
-writeFile("data/emission.json", JSON.stringify(totalcarbon), function (err) {
-   if (err) console.error(err);
-});
+
 
 console.log(totalcarbon)
