@@ -9,7 +9,7 @@ var carbonData;
 
 // tries to read the file
 try {
-    carbonData = readFileSync("faris.json", "utf8");
+    carbonData = readFileSync("data/carbon.json", "utf8");
 } 
 // catches the errors if they are any
 catch (err) {
