@@ -5,7 +5,7 @@ const checkDay = global.checkDay;
 
 // creates a function to compare the user's statistics with averages
 function compare() {
-
+   
     // Reads the data for the current day
     var carbonData;
     try {
@@ -21,4 +21,19 @@ function compare() {
     }
     // If it is correctly formatted, it parses the json file
     carbonData = JSON.parse(carbonData);  
+    
+    var recommended = {
+    "advice":{
+        "transportation":true,
+        "food":true,
+        "led":true,
+        "screens":true,
+        "purchase":true,
+        "heating":true,
+        },
+    "earths":5.6,
+    "average":1000
+    }
+ 
+    if(carbonData.transportation[0] >1) return true;
 }
