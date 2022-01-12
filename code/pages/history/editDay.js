@@ -5,6 +5,8 @@ const screens = global.screens;
 const devices = global.devices;
 const checkHistory = global.checkHistory;
 const check = global.check;
+const calculateCarbon = global.calculateCarbon;
+const checkProfile = global.checkProfile;
 // Stores the html for one purchase
 const PURCHASE_HTML = '<input type="checkbox" style="margin-top:20px;"><label style="margin-bottom:30px"> Whether research was done</label><br><h2 class="largeText" style="margin-top:40px">Grams of carbon emitted</h2><input type="text" class="inputBox"><br><h2 class="largeText">OR</h2><br><h2 class="largeText">Price</h2><input type="text" class="inputBox"><hr class="line" style="margin-bottom:20px"/>';
 
@@ -129,7 +131,7 @@ submit.onclick = function() {
         else {
             transpor = 0;
         }
-        todayData.transportation[transports[i]] = transpor;
+        todayData.transportation[transports[i]] = Number(transpor);
     }
 
     // For every screen activity, it stores what was entered in the input box
@@ -228,6 +230,22 @@ submit.onclick = function() {
             todayData.purchases[i].carbon = undefined;
         }
     }
+
+    var profile;
+    try {
+        profile = readFileSync("data/profile.json", "utf8");
+    } 
+    catch (err) {
+        console.error(err);
+    }
+    // Checks if the json is correctly formatted, if not it redirects to an error
+    if(!global.checkProfile()) {  
+        window.location.href = "pages/error/profileError.html";
+        return;
+    }  
+    profile = JSON.parse(profile);  
+    var total = calculateCarbon(todayData,profile).total;
+    todayData.total = total;
 
     // Checks if the history file is correctly formatted. If not, it redirects to an error
     var days;

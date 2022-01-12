@@ -4,6 +4,7 @@ const screens = global.screens;
 const devices = global.devices;
 const checkHistory = global.checkHistory;
 const checkDay = global.checkDay;
+const calculateCarbon = global.calculateCarbon;
 
 // Starts a new day for the user
 async function startNew() {
@@ -27,6 +28,7 @@ async function startNew() {
         // in boolean values (whether or not the device was used)
         otherDevices: {},
         purchases: {},
+        total: 0
     }
     // Sets the default values of transportation, screen, and otherDevices
     for(let i=0; i<transports.length; i++){
@@ -91,6 +93,23 @@ async function startNew() {
     // If today.json was not blank, the info has to be transferred to history.txt
     // today.json is parsed
     oldDay = JSON.parse(todayData);
+
+    var profile;
+    try {
+        profile = readFileSync("data/profile.json", "utf8");
+    } 
+    catch (err) {
+        console.error(err);
+    }
+    // Checks if the json is correctly formatted, if not it redirects to an error
+    if(!global.checkProfile()) {  
+        window.location.href = "pages/error/profileError.html";
+        return;
+    }
+    profile = JSON.parse(profile);  
+    var total = calculateCarbon(oldDay,profile).total;
+    oldDay.total = total;
+
     // Sets the index of the new day to 1 + the previous day's index
     newDay.index = days.length+1;
     // If history.txt is blank, it can be immediately overwritten
@@ -116,7 +135,6 @@ async function startNew() {
     let newFile = "";
     // Every day is written to newFile
     for(let i=0; i<days.length; i++){
-        JSON.parse(days[i]);  
         newFile += days[i];
         // A line break is added every time except for the last one
         if(i<days.length-1){

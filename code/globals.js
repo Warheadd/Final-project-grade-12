@@ -81,6 +81,8 @@ function check(day){
         // Both carbon and price should be numbers (or undefined)
         if(typeof p.carbon != "number" && p.carbon!=undefined || typeof p.price != "number" && p.price!=undefined) return false;
     }
+    // The total carbon must be a number
+    if(typeof day.total != "number") return false;
     // If EVERY condition is met, it is a valid day
     return true;
 }
@@ -170,4 +172,123 @@ exports.checkProfile = function(){
     if(typeof profile.router != "boolean") return false;
     // If EVERY condition is met, it is correctly formatted
     return true;
+}
+
+exports.calculateCarbon = function(today,profile){
+    //province carbon per wh
+    var povwh; 
+    switch(profile.province){
+        case "alberta": povwh = 0.790; break;
+        case "british bolumbia": povwh = 0.013; break;
+        case "manitoba": povwh = 0.0034; break;
+        case "new brunswick": povwh = 0.280; break;
+        case "newfoundland and labrador": povwh = 0.032; break;
+        case "northwest territories": povwh = 0.390; break;
+        case "nova scotia": povwh = 0.600; break;
+        case "nunavut": povwh = 0.750; break;
+        case "ontario": povwh = 0.040; break;
+        case "prince edward island": povwh = 0.020; break;
+        case "quebec": povwh = 0.0012; break;
+        case "saskatchewan": povwh = 0.660; break;
+        case "yukon": povwh = 0.41; break;
+   }
+    //transportation
+    var gascar = 171*50*today.transportation.gascar;
+    var electric = 0.3*30*povwh*1000*today.transportation.electric;
+    var bus = 105*50*today.transportation.bus;
+    var walk = 0;
+    var train = 41*40*today.transportation.train;
+    var plane = 255*740*today.transportation.plane;
+    var boat = 19*40*today.transportation.boat;
+
+    //lights
+    var light;
+    if (profile.led == true){
+        light = ((profile.sqft*40)/60)*today.lights*povwh;
+    }
+    else{
+        light = ((profile.sqft*40)/15)*today.lights*povwh;
+    }
+
+    //appliances
+    var otherDevices = 0
+    if (today.otherDevices.oven == true){otherDevices = otherDevices + 1.2*povwh;}
+    if (today.otherDevices.stove == true){otherDevices = otherDevices + 3*povwh;}
+    if (today.otherDevices.microwave == true){otherDevices = otherDevices + 1*povwh;}
+    if (today.otherDevices.blender == true){otherDevices = otherDevices + 0.5*povwh;}
+    if (today.otherDevices["coffee machine"] == true){otherDevices = otherDevices + 1*povwh;}
+    if (today.otherDevices.kettle == true){otherDevices = otherDevices + 1.2*povwh;}
+    if (today.otherDevices.dishwasher == true){otherDevices = otherDevices + 1.35*povwh;}
+    if (today.otherDevices["small fan"] == true){otherDevices = otherDevices + 0.07*povwh;}
+    if (today.otherDevices["ceiling fan"] == true){otherDevices = otherDevices + 0.12*povwh;}
+    if (today.otherDevices["washing machine"] == true){otherDevices = otherDevices + 0.8*povwh;}
+    if (today.otherDevices.dryer == true){otherDevices = otherDevices + 3*povwh;}
+    if (today.otherDevices.vacuum == true){otherDevices = otherDevices + 1*povwh;}
+    if (today.otherDevices.printer == true){otherDevices = otherDevices + 0.1*povwh;}
+    if (today.otherDevices.lamp == true){otherDevices = otherDevices + 0.03*povwh;}
+    if (today.otherDevices.router == true){otherDevices = otherDevices + 0.007*povwh;}
+    if (today.otherDevices.console == true){otherDevices = otherDevices + 0.15*povwh;}
+    if (today.otherDevices["hair dryer"] == true){otherDevices = otherDevices + 1.5*povwh}
+    if (today.otherDevices.fire == true){otherDevices = otherDevices + 1000}
+    if (today.otherDevices.bbq == true){otherDevices = otherDevices + 1000}
+
+    //ambient
+    var heating;
+    switch(profile.heating){
+        case "electric furnace": heating = 0.0075*profile.sqft*4*povwh; break;
+        case "natural gas furnace": heating = ((20*profile.sqft*24)/1000000)*53000; break;
+        case "fuel oil furnace": heating = ((20*profile.sqft*24)/1000000)*53000; break;
+        case "boiler": heating = 4*povwh*3; break;
+        case "heat pump": heating = 50/30*1000*povwh; break;
+    }
+    //fridge
+    otherDevices = otherDevices+ profile.fridge/365*povwh*1000;
+
+    //screens
+    var screenwh;
+    var phone = today.screen.phone*0.003*povwh;
+    var laptop = today.screen.laptop*0.06*povwh;
+    var pc = today.screen.pc*0.1*povwh;
+    var tv = today.screen.tv*0.15*povwh;
+
+    //products
+    var totalprice=0;
+    var purchcarbon=0;
+
+    for(let i=0; i<Object.keys(today.purchases).length; i++){
+
+        if (today.purchases[i].price != undefined){
+            totalprice = today.purchases[i].price + totalprice;
+        }
+        else{
+            purchcarbon = today.purchases[i].carbon +purchcarbon;
+        }
+        
+    }
+    purchcarbon = purchcarbon + totalprice*490;
+
+    //food
+    
+    var meatPercent = (today.food.meat/100);
+    var beef = meatPercent*(today.food.beef/100)*2.5*55000;
+    var meat = meatPercent*(1-(today.food.meat/100))*2.5*3000;
+    var notMeat = (1-meatPercent)*2.5*1000;
+    var local = (1-(today.food.local/100))*2.5*300;
+
+    //ouput sorting
+    var totalc = gascar+electric+bus+walk+plane+train+boat+light+otherDevices+heating+phone+laptop+pc+tv+purchcarbon+beef+meat+local;
+
+    const totalcarbon = {
+            "food":beef+meat+notMeat+local,
+            "lights":light, 
+            "transportation":gascar+electric+bus+walk+plane+train+boat, 
+            "purchases":purchcarbon,
+            "screen":phone+laptop+pc+tv,
+            "heating":heating,
+            "other":otherDevices,
+            "total":totalc
+    };
+
+    return totalcarbon;
+
 }

@@ -3,7 +3,8 @@ const global = require("../../globals.js");
 const checkHistory = global.checkHistory;
 const HISTORY_ELEMENT_FIRST = '<a href="editDay.html" class="historyElement" id=';
 const HISTORY_ELEMENT_SECOND = '><div><h1>';
-const HISTORY_ELEMENT_THIRD = '</h1><p></p></div></a>';
+const HISTORY_ELEMENT_THIRD = '</h1><p>';
+const HISTORY_ELEMENT_FOURTH = '</p></div></a>';
 
 // If the user clicks the leave button, they are redirected back to the main page
 var submit = document.getElementById("leaveHistory");
@@ -43,7 +44,7 @@ else {
         // Appends the div to the container
         container.appendChild(element);
         // Sets the html of the div to the correct history html, with the id and date information inside
-        element.outerHTML = HISTORY_ELEMENT_FIRST+i+HISTORY_ELEMENT_SECOND+date+HISTORY_ELEMENT_THIRD;
+        element.outerHTML = HISTORY_ELEMENT_FIRST+i+HISTORY_ELEMENT_SECOND+date+HISTORY_ELEMENT_THIRD+"Total emissions: "+day.total.toFixed(2)+HISTORY_ELEMENT_FOURTH;
     }
 
     // Loops through every history element

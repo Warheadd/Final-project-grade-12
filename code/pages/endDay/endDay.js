@@ -1,7 +1,3 @@
-const { readFileSync, writeFile } = require("fs");
-const global = require("../../globals.js");
-const checkHistory = global.checkHistory;
-const checkDay = global.checkDay;
 const AVERAGE_GRAMS = 50904;
 
 // Reads the data for the current day
@@ -12,12 +8,6 @@ try {
 catch (err) {
     console.error(err);
 }
-// Checks if the json is correctly formatted, if not it redirects to an error
-/*if(!checkDayStats()) {  
-    window.location.href = "../error/dayError.html";
-    return;
-}*/
-// If it is correctly formatted, it parses the json file
 conclusions = JSON.parse(conclusions);
 
 // Reads the data for the current day
@@ -37,19 +27,19 @@ catch (err) {
 stats = JSON.parse(stats);
 
 if(stats.total>AVERAGE_GRAMS){
-    var title = document.getElementById("positive");
+    var title = document.getElementById("negative");
     title.hidden = false;
 }
 else {
-    var title = document.getElementById("negative");
+    var title = document.getElementById("positive");
     title.hidden = false;
 }
 
 var total = document.getElementById("total");
-total.innerHTML = "Today you emitted a total of " + stats.total + " grams of carbon.";
+total.innerHTML = "Today you emitted a total of " + stats.total.toFixed(2) + " grams of carbon.";
 
 var earths = document.getElementById("earths");
-earths.innerHTML = "If everyone emitted as much as you do it would take " + conclusions.earths + " earths to sustain you."
+earths.innerHTML = "If everyone emitted as much as you do it would take " + conclusions.earths.toFixed(2) + " earths to sustain you."
 
 var averageCompare = document.getElementById("averageCompare");
 if(stats.total<conclusions.average){
@@ -61,6 +51,14 @@ else{
 
 var container = document.getElementById("tips");
 var advice = conclusions.advice;
+
+var ad = false;
+for(let i in advice){
+    ad = ad || advice[i];
+}
+if(!ad){
+    document.getElementById("tipTitle").hidden = true;
+}
 
 if(advice.transportation){
     var transport = document.createElement("p");
@@ -122,6 +120,8 @@ submit.onclick = function() {
     }
     // If it is not an error, it parses the JSON
     todayData = JSON.parse(todayData);
+
+    todayData.total = stats.total;
 
     // Checks if the history file is correctly formatted, if not it redirects to an error.
     if(!checkHistory()) {  
